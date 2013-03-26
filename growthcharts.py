@@ -1,14 +1,4 @@
-# author: 
-#   dimitrios kiousis | dqsis.com
-
-# title: 
-#   growth charts for girls (from birth to 24 months)
-
-# data tables source: 
-#   World Health Organization (WHO)
-#   http://1.usa.gov/10Asgdc
-
-# -------------------------------------
+# growthcharts.py
 
 # START +++
 
