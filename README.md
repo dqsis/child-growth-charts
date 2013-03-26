@@ -12,13 +12,13 @@ The script, using as input data the child's:
 * age
 * weight
 * length
-* head circumference, 
+* head circumference 
  
- generates a series plots showing:
+generates a series plots showing:
  * the curve and rate of child's growth, and
  * in which [percentile](http://en.wikipedia.org/wiki/Percentile) of population the child lies.
 
- An example of the output plots is shown in [this figure](https://github.com/dqsis/child-growth-charts/blob/master/data/growth.png).
+An example of the output plots is shown in [this figure](https://github.com/dqsis/child-growth-charts/blob/master/data/growth.png).
 
 Where to get it
 ---------------
@@ -49,7 +49,7 @@ The structure of the file is as following:
   </tr>
 </table>
 
-An example can be found [here](http://github.com/dqsis/child-growth-charts/data/child_data.csv). 
+An example can be found [here](https://github.com/dqsis/child-growth-charts/data/child_data.csv). 
 
 
 Background
@@ -66,7 +66,7 @@ Without doubt, more simplistic approaches (e.g., spreadsheets) can be used to ad
 Discussion and development
 --------------------------
 
-Future features for implementation and development ideas are listed in the [TODO.md](http://github.com/dqsis/child-growth-charts/TODO.md) file.
+Future features for implementation and development ideas are listed in the [TODO.md](https://github.com/dqsis/child-growth-charts/TODO.md) file.
 
 Licence
 -------
