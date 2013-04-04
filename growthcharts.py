@@ -1,4 +1,14 @@
-# growthcharts.py
+# title: 
+# child growth charts
+
+# purpose:
+# (graphical) assessment of a child's development 
+# according to the World Health Organization growth standards 
+
+# repository:
+# http://github.com/dqsis/child-growth-charts
+
+# -------------------------------------
 
 # START +++
 
@@ -6,29 +16,45 @@
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+from sys import exit
 
 # i/o files path
 path = 'data/'
 
 # read child's data (user input)
 chdata = 'child_data.csv'
-charray = np.genfromtxt(os.path.join(path,chdata), delimiter=',', skiprows=1)
+
+# gender (male or female)
+childfile = open(os.path.join(path,chdata))
+genderline = childfile.readline()
+
+# age, weight, height, head circumference
+charray = np.genfromtxt(os.path.join(path,chdata), delimiter=',', dtype = None, skiprows=2)
+
+# ---
+# Not required! Missing data ignored by plotting! 
 # remove rows with missing data | code snippet source: http://bit.ly/ZLKBCA 
-charray = charray[~np.isnan(charray).any(axis=1)]
+# charray = charray[~np.isnan(charray).any(axis=1)]
+# ---
 
-# Read age vs weight WHO data
-awdata = 'age_weight.csv'
-awarray = np.loadtxt(os.path.join(path,awdata), delimiter=',', skiprows=1)
-# Read age vs length WHO data
-aldata = 'age_length.csv'
-alarray = np.loadtxt(os.path.join(path,aldata), delimiter=',', skiprows=1)
-# Read age vs head circumference WHO data
-ahdata = 'age_headc.csv'
-aharray = np.loadtxt(os.path.join(path,ahdata), delimiter=',', skiprows=1)
-# Read lenght vs weight WHO data
-lwdata = 'length_weight.csv'
-lwarray = np.loadtxt(os.path.join(path,lwdata), delimiter=',', skiprows=1)
-
+if genderline[7] == 'f':
+    # read girls' (0-2) WHO charts
+    # Read age vs weight WHO data
+    awdata = 'g_age_weight.csv'
+    awarray = np.loadtxt(os.path.join(path,awdata), delimiter=',', skiprows=1)
+    # Read age vs length WHO data
+    aldata = 'g_age_length.csv'
+    alarray = np.loadtxt(os.path.join(path,aldata), delimiter=',', skiprows=1)
+    # Read age vs head circumference WHO data
+    ahdata = 'g_age_headc.csv'
+    aharray = np.loadtxt(os.path.join(path,ahdata), delimiter=',', skiprows=1)
+    # Read lenght vs weight WHO data
+    lwdata = 'g_length_weight.csv'
+    lwarray = np.loadtxt(os.path.join(path,lwdata), delimiter=',', skiprows=1)
+else:
+    print('no data available for boys yet')
+    exit()
+    
 # plots
 plt.figure()
 
@@ -52,6 +78,16 @@ plt.ylabel('weight [kg]')
 plt.xlim([0,24])
 plt.xticks(np.arange(0,25,3)) 
 
+plt.text(awarray[13,0], awarray[13,1],'2%',fontsize=6)
+plt.text(awarray[14,0], awarray[14,2],'5%',fontsize=6)
+plt.text(awarray[15,0], awarray[15,3],'10%',fontsize=6)
+plt.text(awarray[16,0], awarray[16,4],'25%',fontsize=6)
+plt.text(awarray[17,0], awarray[17,5],'50%',fontsize=6)
+plt.text(awarray[18,0], awarray[18,6],'75%',fontsize=6)
+plt.text(awarray[19,0], awarray[19,7],'90%',fontsize=6)
+plt.text(awarray[20,0], awarray[20,8],'95%',fontsize=6)
+plt.text(awarray[21,0], awarray[21,9],'98%',fontsize=6)
+
 # age vs length
 plt.subplot(2,2,2)
 plt.plot(\
@@ -70,7 +106,7 @@ plt.grid(True)
 plt.xlabel('age [months]')
 plt.ylabel('length [cm]')
 plt.xlim([0,24])
-plt.xticks(np.arange(0,25,3)) 
+plt.xticks(np.arange(0,25,3))
 
 # age vs head circumference
 plt.subplot(2,2,3)

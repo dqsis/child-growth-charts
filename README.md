@@ -9,6 +9,7 @@ Main features
 -------------
 
 The script, using as input data the child's:
+* gender
 * age
 * weight
 * length
@@ -70,4 +71,12 @@ Future features for implementation and development ideas are listed in the [TODO
 
 Licence
 -------
+
 This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-nc-sa/3.0/deed.en_US).
+
+Contact
+-------
+
+[Mail](http://dqsis.com/contact/)
+[Twitter (@dqsis)](http://twitter.com/dqsis)
+
