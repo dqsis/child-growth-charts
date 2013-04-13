@@ -1,39 +1,37 @@
-# title: 
-# child growth charts
-
-# purpose:
-# (graphical) assessment of a child's development 
+# Graphical assessment of a child's development 
 # according to the World Health Organization growth standards 
 
-# repository:
+# Repository & documentation:
 # http://github.com/dqsis/child-growth-charts
-
 # -------------------------------------
 
-# START +++
 
-# import libraries
-import numpy as np
+# Import libraries
 import os
-import matplotlib.pyplot as plt
 from sys import exit
 
-# i/o files path
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+# I/O files path
 path = 'data/'
 
-# read child's data (user input)
+
+# Read child's data (user input)
 chdata = 'child_data.csv'
 
-# gender (male or female)
+
+# Gender (male or female)
 childfile = open(os.path.join(path,chdata))
 genderline = childfile.readline()
 
-# age, weight, height, head circumference
+# Age, weight, height, head circumference
 charray = np.genfromtxt(os.path.join(path,chdata), delimiter=',', dtype = None, skiprows=2)
 
 # ---
 # Not required! Missing data ignored by plotting! 
-# remove rows with missing data | code snippet source: http://bit.ly/ZLKBCA 
+# Remove rows with missing data | code snippet source: http://bit.ly/ZLKBCA 
 # charray = charray[~np.isnan(charray).any(axis=1)]
 # ---
 
@@ -54,11 +52,13 @@ if genderline[7] == 'f':
 else:
     print('no data available for boys yet')
     exit()
+   
     
-# plots
+# Plots
 plt.figure()
 
-# age vs weight
+
+# Age vs weight
 plt.subplot(2,2,1)
 plt.plot(\
 awarray[:,0],awarray[:,1],'r--',\
@@ -88,7 +88,8 @@ plt.text(awarray[19,0], awarray[19,7],'90%',fontsize=6)
 plt.text(awarray[20,0], awarray[20,8],'95%',fontsize=6)
 plt.text(awarray[21,0], awarray[21,9],'98%',fontsize=6)
 
-# age vs length
+
+# Age vs length
 plt.subplot(2,2,2)
 plt.plot(\
 alarray[:,0],alarray[:,1],'r--',\
@@ -108,7 +109,8 @@ plt.ylabel('length [cm]')
 plt.xlim([0,24])
 plt.xticks(np.arange(0,25,3))
 
-# age vs head circumference
+
+# Age vs head circumference
 plt.subplot(2,2,3)
 plt.plot(\
 aharray[:,0],aharray[:,1],'r--',\
@@ -128,7 +130,8 @@ plt.ylabel('head circumference [cm]')
 plt.xlim([0,24])
 plt.xticks(np.arange(0,25,3)) 
 
-# length vs weight
+
+# Length vs weight
 plt.subplot(2,2,4)
 plt.plot(\
 lwarray[:,0],lwarray[:,1],'r--',\
@@ -148,13 +151,12 @@ plt.ylabel('weight [kg]')
 plt.xlim([45,110])
 plt.xticks(np.arange(45,111,10)) 
 
-# adjust distance between subplots
+# Adjust distance between subplots
 plt.subplots_adjust(wspace=0.4, hspace=0.4)
 
-# show graphs
+# Show & save graphs
 plt.show()
 
-# save figures to .pdf and .png files
 plt.savefig(os.path.join(path,'growth.pdf'))
 plt.savefig(os.path.join(path,'growth.png'))
 

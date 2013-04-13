@@ -37,6 +37,7 @@ Documentation
 
 The only input required by `growthcharts.py` is the population of the file `child_data.csv` which contains the child's:
 
+* gender
 * weight
 * length
 * head circumference
@@ -78,5 +79,6 @@ Contact
 -------
 
 [Mail](http://dqsis.com/contact/)
+
 [Twitter (@dqsis)](http://twitter.com/dqsis)
 
