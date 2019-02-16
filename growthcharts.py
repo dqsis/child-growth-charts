@@ -222,9 +222,12 @@ plt.text(lwarray[125,0], lwarray[125,9],'98%',fontsize=7)
 plt.subplots_adjust(wspace=0.4, hspace=0.4)
 
 # Show & save graphs
+fig1 = plt.gcf()
 plt.show()
+plt.draw()
 
-plt.savefig(os.path.join(path,'growth.pdf'))
-plt.savefig(os.path.join(path,'growth.png'))
+fig1.set_size_inches(16, 9)
+fig1.savefig(os.path.join(path,'growth.pdf'), dpi=100)
+fig1.savefig(os.path.join(path,'growth.png'), dpi=100)
 
 # END +++
